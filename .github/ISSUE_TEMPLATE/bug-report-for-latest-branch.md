@@ -2,7 +2,7 @@
 name: Bug report for latest branch
 about: Create a report to help us improve
 title: "[STABLEBUG]"
-labels: ''
+labels: bug, latest
 assignees: ''
 
 ---

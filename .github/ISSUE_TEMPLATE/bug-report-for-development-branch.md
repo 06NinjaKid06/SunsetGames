@@ -2,7 +2,7 @@
 name: Bug report for development branch
 about: Create a report to help us improve
 title: "[DEVBUG]"
-labels: ''
+labels: bug, development
 assignees: ''
 
 ---
