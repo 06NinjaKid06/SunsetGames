@@ -1,2 +1,2 @@
 # SunsetGames
-me and my friends at school to play games :D
+A way to play games online.
