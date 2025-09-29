@@ -9,18 +9,18 @@
             <h1>List of games below</h1>
             <a style="color:antiquewhite" href="https://sunsetgames.netlify.app/roblox/index.html">Roblox [BORKED]</a>
             <a style="color:antiquewhite" href="https://sunsetgames.netlify.app/gdlite/index.html">Geometry Dash Lite 2.11</a>
-            <button onclick="openGame()">Open Game</button>
+            <button onclick="openGame()">about:blank-ifier</button>
                 <script>
-                function openGame() {
-                    var win = window.open()
-                    var url = "https://sunsetgames.netlify.app/"
-                    var iframe = win.document.createElement('iframe')
-                    iframe.style.width = "100%";
-                    iframe.style.height = "100%";
-                    iframe.style.border = "none";
-                    iframe.src = url
-                    win.document.body.appendChild(iframe)
-                }
+    function openGame() {
+        var win = window.open(url, '_blank', 'fullscreen=yes');
+        var url = "https://sunsetgames.netlify.app/"
+        var iframe = win.document.createElement('iframe')
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.border = "none";
+        iframe.src = url
+        win.document.body.appendChild(iframe)
+    }
                 </script>
         </center>
     </div>
