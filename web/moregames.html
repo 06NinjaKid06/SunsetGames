@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sunset Games</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Press Start 2P', monospace;
+    background-image: url('https://i.imgur.com/4bfMr3C.png');
+    min-height: 600px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    image-rendering: pixelated;
+  }
+
+  .bg-sky {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 55%;
+    background: linear-gradient(180deg, #7ec8e3 0%, #a8d8ea 100%);
+    z-index: 0;
+  }
+
+  .bg-ground {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 45%;
+    z-index: 0;
+  }
+
+  .ground-layer { width: 100%; display: flex; flex-wrap: wrap; }
+
+  .block { width: 32px; height: 32px; flex-shrink: 0; image-rendering: pixelated; }
+  .grass-block {
+    background: #5d9e3f;
+    border-top: 4px solid #7bc34a;
+    border-left: 2px solid rgba(255,255,255,0.2);
+    border-right: 2px solid rgba(0,0,0,0.2);
+  }
+  .dirt-block {
+    background: #8b5e3c;
+    border: 1px solid rgba(0,0,0,0.2);
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,0.08) 4px, rgba(0,0,0,0.08) 5px);
+  }
+
+  .clouds { position: absolute; top: 6%; left: 0; right: 0; z-index: 1; }
+  .cloud { position: absolute; background: white; opacity: 0.9; image-rendering: pixelated; }
+  .cloud-1 { top: 0; left: 5%; width: 80px; height: 24px; }
+  .cloud-1::before { content:''; position:absolute; width:48px; height:24px; background:white; top:-16px; left:8px; }
+  .cloud-1::after { content:''; position:absolute; width:32px; height:24px; background:white; top:-8px; left:36px; }
+  .cloud-2 { top: 10px; left: 40%; width: 96px; height: 24px; }
+  .cloud-2::before { content:''; position:absolute; width:56px; height:24px; background:white; top:-16px; left:16px; }
+  .cloud-3 { top: 0; right: 10%; width: 64px; height: 24px; }
+  .cloud-3::before { content:''; position:absolute; width:40px; height:24px; background:white; top:-12px; left:8px; }
+
+  .content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 680px;
+	margin-top: 5%;
+  }
+  
+  .buttons1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    width: 680px;
+  }
+  
+  .donebutton {
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    width: 340px;
+	margin-top: 20%;
+  }
+	
+  .mc-btn {
+    width: 100%;
+    padding: 10px 16px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: #fff;
+    text-shadow: 1px 1px 0 #3f3f3f;
+    letter-spacing: 0.5px;
+    background: #6a6a6a;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    border-top: 2px solid #9e9e9e;
+    border-left: 2px solid #9e9e9e;
+    border-right: 2px solid #3a3a3a;
+    border-bottom: 2px solid #3a3a3a;
+    image-rendering: pixelated;;
+  }
+
+  .mc-btn:hover {
+    background: #7a7af0;
+    border-top: 2px solid #afafff;
+    border-left: 2px solid #afafff;
+    border-right: 2px solid #4040c0;
+    border-bottom: 2px solid #4040c0;
+    color: #ffffc0;
+  }
+
+  .mc-btn:active {
+    background: #5050d0;
+    border-top: 2px solid #3a3aaa;
+    border-left: 2px solid #3a3aaa;
+    border-right: 2px solid #8888ee;
+    border-bottom: 2px solid #8888ee;
+  }
+
+  .btn-row { display: flex; gap: 6px; width: 100%; }
+  .mc-btn.half { width: calc(50% - 3px); }
+
+  .version {
+    position: fixed; bottom: 8px; left: 12px;
+    font-family: 'Press Start 2P', monospace; font-size: 7px;
+    color: rgba(255,255,255,0.5); text-shadow: 1px 1px 0 #000; z-index: 20;
+  }
+</style>
+</head>
+<body>
+
+
+
+	<div class="buttons">
+  <div class="buttons1">
+    <button class="mc-btn" onclick="gd()">EaglerCraft 1.12.2</button>
+    <button class="mc-btn" onclick="rec()">EaglerCraft 1.8.8</button>
+	</div>
+	<div class="buttons1">
+    <button class="mc-btn" onclick="mj()">Random Client (click to see)</button>
+    <button class="mc-btn" onclick="pr()">EaglerCraft Modpacks</button>
+	</div>
+	<div class="donebutton">
+    <button class="mc-btn" onclick="mg()">Done</button>
+	</div>
+	</div>
+	</div>
+  </div>
+</div>
+
+<div class="version">Sunset Games 26.4.24</div>
+
+<script>
+const clients = ["resent", "shadow", "pixel12", "pixel", "astra", "star", "horror", "z"];
+
+const random = Math.floor(Math.random() * clients.length);
+console.log(random, clients[random]);
+
+
+	var click = new Audio('Click.mp3');
+
+function gd() {
+  window.location.href = "Eaglercraft_1.12_Offline_en_US.html";
+  click.play();
+}
+
+function rec() {
+  window.location.href = "EaglercraftX_1.8_u53_Offline_Signed.html";
+  click.play();
+}
+
+function pr() {
+	window.location.href= "https://pokerogue.122399.xyz/";
+	click.play();
+}
+
+function mg() {
+	window.location.href = "index.html";
+	click.play();
+}
+
+function mj() {
+	window.location.href = clients[random] + ".html";
+	click.play();
+}
+  
+</script>
+</body>
+</html>
